@@ -1,4 +1,4 @@
-  $ cat fac.ml | ../../back_amd64/amd64_compiler.exe -o program.asm - -vamd64
+  $ cat fac.ml | ../../back/amd64/amd64_compiler.exe -o program.asm - -vamd64
   ANF: let fac n =
          let temp1 = (n = 1) in
            (if temp1
@@ -100,5 +100,5 @@
       82	  ret  ;;;; main
 
   $ nasm -felf64 program.asm -o program.o
-  $ gcc-13 -g -o program.exe ../../back_amd64/rukaml_stdlib.o program.o && ./program.exe
+  $ gcc-13 -g -o program.exe ../../back/amd64/rukaml_stdlib.o program.o && ./program.exe
   rukaml_print_int 24

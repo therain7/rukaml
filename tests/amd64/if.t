@@ -1,4 +1,4 @@
-  $ cat << EOF | ../../back_amd64/amd64_compiler.exe -o program.asm - #-vamd64
+  $ cat << EOF | ../../back/amd64/amd64_compiler.exe -o program.asm - #-vamd64
   > let main = print (if 1=1 then 10 else 20)
   > EOF
 
@@ -48,7 +48,7 @@
       42	  pop rbp
       43	  ret  ;;;; main
   $ nasm -felf64 program.asm -o program.o
-  $ gcc-13 program.o ../../back_amd64/rukaml_stdlib.o -o program.exe
+  $ gcc-13 program.o ../../back/amd64/rukaml_stdlib.o -o program.exe
   $ ./program.exe && echo $?
   rukaml_print_int 10
   0

@@ -32,7 +32,7 @@ let () =
  (action
   (progn
    (run
-    %%{project_root}/back_rv64/RV64_compiler.exe
+    %%{project_root}/back/rv64/RV64_compiler.exe
     -o
     %%{targets}
     %s))))
@@ -52,9 +52,9 @@ let () =
 (rule
  (targets %s.exe)
  (deps
-  %%{project_root}/back_rv64/RV64_compiler.exe
+  %%{project_root}/back/rv64/RV64_compiler.exe
   (:src %s.s)
-  %%{project_root}/back_rv64/rukaml_stdlib.o)
+  %%{project_root}/back/rv64/rukaml_stdlib.o)
  ;(mode
  ; (promote (until-clean)))
  (action
@@ -63,7 +63,7 @@ let () =
    (run
     riscv64-linux-gnu-gcc-13
     -g
-    %%{project_root}/back_rv64/rukaml_stdlib.o
+    %%{project_root}/back/rv64/rukaml_stdlib.o
     %s.o
     -o
     %%{targets}))))
@@ -88,7 +88,7 @@ let () =
 (cram
  (applies_to %s)
  (deps
-  %%{project_root}/back_rv64/rukaml_stdlib.o
+  %%{project_root}/back/rv64/rukaml_stdlib.o
   %s.ml
   %s_cpsoff.exe
   %s_cpson.exe
